@@ -1,4 +1,4 @@
-package com.rs.ys.mvpdemo;
+package com.rs.ys.mvpdemo.basics;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;

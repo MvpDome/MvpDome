@@ -1,7 +1,14 @@
-package com.rs.ys.mvpdemo;
+package com.rs.ys.mvpdemo.basics;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+
+import com.rs.ys.mvpdemo.AppComponent;
+import com.rs.ys.mvpdemo.base.BaseActivity;
+
+import java.io.File;
+
+import io.rx_cache2.internal.RxCache;
 
 /**
  * Created by 谢岳峰 on 2018/8/27.
@@ -22,7 +29,7 @@ public abstract class BasicsImplActivity extends BaseActivity<BasicsPresenterImp
 
         try {
             if(isAutoBuild){
-                setupActivityComponent(DaggerAppComponent.builder().application(getApplication()).build());
+//                setupActivityComponent(DaggerAppComponent.builder().application(getApplication()).build());
             }
         } catch (Exception e) {
             e.printStackTrace();

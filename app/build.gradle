@@ -119,6 +119,7 @@ dependencies {
     api rootProject.ext.dependencies["dagger2"]
     annotationProcessor rootProject.ext.dependencies["dagger2-compiler"]
     api rootProject.ext.dependencies["gson"]
+    compile 'com.github.VictorAlbertos.Jolyglot:gson:0.0.3'
 
     //test
     api rootProject.ext.dependencies["timber"]

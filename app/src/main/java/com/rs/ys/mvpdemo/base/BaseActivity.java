@@ -1,7 +1,11 @@
-package com.rs.ys.mvpdemo;
+package com.rs.ys.mvpdemo.base;
 
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+
+import com.rs.ys.mvpdemo.AppComponent;
+import com.rs.ys.mvpdemo.IPresenter;
+import com.rs.ys.mvpdemo.IView;
 
 import javax.inject.Inject;
 

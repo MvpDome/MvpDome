@@ -3,25 +3,32 @@ package com.rs.ys.mvpdemo;
 import android.app.Application;
 import android.content.Context;
 
+import com.rs.ys.mvpdemo.basics.BasicsScope;
+import com.rs.ys.mvpdemo.utils.IRepositoryManager;
+import com.rs.ys.mvpdemo.utils.RxCacheManager;
+
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import dagger.Lazy;
 import io.rx_cache2.internal.RxCache;
-import okhttp3.Cache;
 import retrofit2.Retrofit;
 
 /**
  * Created by 谢岳峰 on 2018/8/30.
  */
-@Singleton
-public class RepositoryManager implements IRepositoryManager{
+@BasicsScope
+public class RepositoryManager implements IRepositoryManager {
+    //    @Inject
+//    Lazy<Retrofit> mRetrofit;
     @Inject
-    Lazy<Retrofit> mRetrofit;
+    RxCacheManager cacheManager;
+
+    //    Lazy<RxCache> mRxCache;
+//    @Inject
+//    Application mApplication;
     @Inject
-    Lazy<RxCache> mRxCache;
-    @Inject
-    Application mApplication;
+    public RepositoryManager(){};
 
     @Override
     public <T> T obtainRetrofitService(Class<T> service) {
@@ -42,4 +49,5 @@ public class RepositoryManager implements IRepositoryManager{
     public Context getContext() {
         return null;
     }
+
 }

@@ -1,11 +1,13 @@
-package com.rs.ys.mvpdemo;
+package com.rs.ys.mvpdemo.base;
 
 import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.LifecycleObserver;
 import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.OnLifecycleEvent;
 
-import javax.inject.Inject;
+import com.rs.ys.mvpdemo.IModel;
+import com.rs.ys.mvpdemo.RepositoryManager;
+import com.rs.ys.mvpdemo.utils.IRepositoryManager;
 
 /**
  * Created by 谢岳峰 on 2018/8/28.
@@ -13,7 +15,7 @@ import javax.inject.Inject;
 public class BaseModel implements IModel,LifecycleObserver {
     protected IRepositoryManager mRepositoryManager;//用于管理网络请求层, 以及数据缓存层
 
-    public BaseModel(IRepositoryManager repositoryManager) {
+    public BaseModel(RepositoryManager repositoryManager) {
         this.mRepositoryManager = repositoryManager;
     }
     public BaseModel() {

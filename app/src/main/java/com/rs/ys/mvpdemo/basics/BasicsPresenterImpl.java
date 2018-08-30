@@ -1,4 +1,7 @@
-package com.rs.ys.mvpdemo;
+package com.rs.ys.mvpdemo.basics;
+
+import com.rs.ys.mvpdemo.IView;
+import com.rs.ys.mvpdemo.base.BasePresenter;
 
 import javax.inject.Inject;
 

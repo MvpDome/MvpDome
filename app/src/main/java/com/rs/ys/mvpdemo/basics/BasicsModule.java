@@ -1,4 +1,9 @@
-package com.rs.ys.mvpdemo;
+package com.rs.ys.mvpdemo.basics;
+
+import com.rs.ys.mvpdemo.IModel;
+import com.rs.ys.mvpdemo.IView;
+import com.rs.ys.mvpdemo.RepositoryManager;
+import com.rs.ys.mvpdemo.utils.RxCacheManager;
 
 import dagger.Module;
 import dagger.Provides;
@@ -15,6 +20,11 @@ public class BasicsModule {
         this.view = view;
     }
 
+    @Provides
+    RxCacheManager getRxCacheManager() {
+        return RxCacheManager.getInstance();
+    }
+
     @BasicsScope
     @Provides
     IView providesView(){
@@ -26,4 +36,5 @@ public class BasicsModule {
     IModel providesModel(BasicsModelImpl basicsModel){
         return basicsModel;
     }
+
 }

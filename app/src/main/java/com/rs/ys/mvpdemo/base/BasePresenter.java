@@ -1,4 +1,8 @@
-package com.rs.ys.mvpdemo;
+package com.rs.ys.mvpdemo.base;
+
+import com.rs.ys.mvpdemo.IModel;
+import com.rs.ys.mvpdemo.IPresenter;
+import com.rs.ys.mvpdemo.IView;
 
 /**
  * Created by 谢岳峰 on 2018/8/27.

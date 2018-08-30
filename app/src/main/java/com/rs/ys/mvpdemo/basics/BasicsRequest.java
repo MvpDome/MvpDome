@@ -1,4 +1,4 @@
-package com.rs.ys.mvpdemo;
+package com.rs.ys.mvpdemo.basics;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
