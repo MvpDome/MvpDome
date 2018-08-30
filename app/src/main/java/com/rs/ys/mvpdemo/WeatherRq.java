@@ -17,11 +17,4 @@ public class WeatherRq extends BasicsRequest {
     public String getRequestUrl() {
         return "weather_mini";
     }
-
-    @Override
-    public LinkedHashMap<String, String> getMapParams() {
-        LinkedHashMap<String, String> params = new LinkedHashMap<>();
-
-        return null;
-    }
 }

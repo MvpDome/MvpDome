@@ -11,9 +11,9 @@ public class BasicsModelImpl extends BaseModel {
         super(repositoryManager);
     }
 
-    public <T extends BasicsRequest> Observable<WeatherRp> get(T t) {
-
-    }
+//    public <T extends BasicsRequest> Observable<WeatherRp> get(T t) {
+//
+//    }
 
     @Override
     public void onDestroy() {
