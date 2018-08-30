@@ -1,5 +1,7 @@
 package com.rs.ys.mvpdemo;
 
+import javax.inject.Inject;
+
 import io.reactivex.Observable;
 
 /**
@@ -10,10 +12,10 @@ public class BasicsModelImpl extends BaseModel {
     public BasicsModelImpl(IRepositoryManager repositoryManager) {
         super(repositoryManager);
     }
+    @Inject
+    public BasicsModelImpl() {
 
-//    public <T extends BasicsRequest> Observable<WeatherRp> get(T t) {
-//
-//    }
+    }
 
     @Override
     public void onDestroy() {
