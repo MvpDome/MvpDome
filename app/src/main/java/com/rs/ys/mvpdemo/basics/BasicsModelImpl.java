@@ -15,7 +15,9 @@ public class BasicsModelImpl extends BaseModel {
         super(repositoryManager);
     }
 
-    public BasicsModelImpl() {
+    public BasicsModelImpl()
+
+    {
 
     }
 

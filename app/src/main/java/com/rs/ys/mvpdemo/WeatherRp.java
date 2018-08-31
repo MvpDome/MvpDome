@@ -1,5 +1,7 @@
 package com.rs.ys.mvpdemo;
 
+import com.rs.ys.mvpdemo.basics.BasicsResponse;
+
 import java.util.List;
 
 /**

@@ -1,7 +1,11 @@
 package com.rs.ys.mvpdemo.basics;
 
+import android.util.Log;
+
 import com.rs.ys.mvpdemo.IView;
 import com.rs.ys.mvpdemo.base.BasePresenter;
+
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -16,6 +20,6 @@ public class BasicsPresenterImpl extends BasePresenter<BasicsModelImpl, IView> {
     }
 
     public void response() {
-
+        Map<String, Object> map = mRootView.getMap();
     }
 }
