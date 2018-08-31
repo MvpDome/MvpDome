@@ -20,6 +20,7 @@ import io.rx_cache2.internal.RxCache;
 public abstract class BasicsImplActivity extends BaseActivity<BasicsPresenterImpl> implements Params{
     protected boolean isAutoBuild=true;//自动注入公共属性
     protected String httpUrl;
+    protected int apiTag;
     protected Map<String,Object> map =new HashMap<>();
     @Override
     public void setupActivityComponent(AppComponent appComponent) {
@@ -54,5 +55,10 @@ public abstract class BasicsImplActivity extends BaseActivity<BasicsPresenterImp
     }
     protected void put(String key,Object value){
         map.put(key, value);
+    }
+
+    @Override
+    public int getApiTag() {
+        return apiTag;
     }
 }

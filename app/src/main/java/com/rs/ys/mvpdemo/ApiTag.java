@@ -5,4 +5,5 @@ package com.rs.ys.mvpdemo;
  */
 public interface ApiTag {
     int BRANDS = 50001;//获取所有衣服品牌信息接口
+    int BRANDS_TEST = 50002;//获取所有衣服品牌信息接口
 }

@@ -7,6 +7,6 @@ import com.rs.ys.mvpdemo.utils.Params;
  * Created by 谢岳峰 on 2018/8/27.
  */
 public interface IView extends Params{
-    public void callBack(BasicsResponse response, int tag, Object obj);
+    public <T extends BasicsResponse> void callBack(T  t, int tag, Object e);
 
 }

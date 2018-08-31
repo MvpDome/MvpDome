@@ -5,4 +5,5 @@ import java.util.Map;
 public interface Params {
     Map<String,Object> getMap();
     String getUrl();
+    int getApiTag();
 }
