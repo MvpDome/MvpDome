@@ -2,39 +2,43 @@ package com.rs.ys.mvpdemo.basics;
 
 import java.io.Serializable;
 
+import okhttp3.ResponseBody;
+
 /**
  * Created by 谢岳峰 on 2018/8/28.
  */
 public class BasicsResponse implements Serializable {
-    private Object data;
-    private String desc;
-    private int status;
+    private final ResponseBody responseBody;
+    private final boolean aBoolean;
+    private int errorCode;
+    private String errorMsg;
 
-    public Object getData() {
-        return data;
+    public BasicsResponse(ResponseBody responseBody, boolean showMsg) {
+        this.responseBody = responseBody;
+        aBoolean = showMsg;
     }
 
-    public void setData(Object data) {
-        this.data = data;
+    public ResponseBody getResponseBody() {
+        return responseBody;
     }
 
-    public String getDesc() {
-        return desc;
+    public boolean isaBoolean() {
+        return aBoolean;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public int getErrorCode() {
+        return errorCode;
     }
 
-    public int getStatus() {
-        return status;
+    public void setErrorCode(int errorCode) {
+        this.errorCode = errorCode;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public String getErrorMsg() {
+        return errorMsg;
     }
 
-    public boolean isSuccess() {
-        return status == 1000;
+    public void setErrorMsg(String errorMsg) {
+        this.errorMsg = errorMsg;
     }
 }

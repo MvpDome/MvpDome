@@ -5,8 +5,5 @@ package com.rs.ys.mvpdemo;
  */
 public interface IModel {
 
-    /**
-     * 在框架中 {@link BasicsPresenterImpl#onDestroy()} 时会默认调用 {@link IModel#onDestroy()}
-     */
     void onDestroy();
 }

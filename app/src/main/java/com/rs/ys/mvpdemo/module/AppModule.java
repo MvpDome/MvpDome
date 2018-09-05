@@ -1,4 +1,5 @@
-package com.rs.ys.mvpdemo;
+package com.rs.ys.mvpdemo.module;
+
 
 import dagger.Module;
 
@@ -6,5 +7,5 @@ import dagger.Module;
  * Created by 谢岳峰 on 2018/8/27.
  */
 @Module
-public class AppModule {
+public abstract class AppModule {
 }

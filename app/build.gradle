@@ -73,6 +73,7 @@ dependencies {
         exclude module: 'rxjava'
         exclude module: 'dagger'
     }
+    api rootProject.ext.dependencies["rxcache-jolyglot-gson"]
     api(rootProject.ext.dependencies["rxlifecycle2"]) {
         exclude module: 'rxjava'
         exclude module: 'jsr305'
@@ -119,7 +120,6 @@ dependencies {
     api rootProject.ext.dependencies["dagger2"]
     annotationProcessor rootProject.ext.dependencies["dagger2-compiler"]
     api rootProject.ext.dependencies["gson"]
-    compile 'com.github.VictorAlbertos.Jolyglot:gson:0.0.3'
 
     //test
     api rootProject.ext.dependencies["timber"]

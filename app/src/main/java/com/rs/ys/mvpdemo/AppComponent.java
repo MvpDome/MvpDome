@@ -2,6 +2,8 @@ package com.rs.ys.mvpdemo;
 
 import android.app.Application;
 
+import com.rs.ys.mvpdemo.module.AppModule;
+
 import javax.inject.Singleton;
 
 import dagger.BindsInstance;

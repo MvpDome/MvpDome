@@ -1,14 +1,11 @@
 package com.rs.ys.mvpdemo;
 
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.util.Log;
 
 import com.google.gson.Gson;
 import com.rs.ys.mvpdemo.basics.BasicsImplActivity;
 import com.rs.ys.mvpdemo.basics.BasicsResponse;
-
-import java.util.Map;
 
 public class MainActivity extends BasicsImplActivity {
 
@@ -16,23 +13,29 @@ public class MainActivity extends BasicsImplActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        httpUrl = "http://www.wanandroid.com/article/list/0/json";
 
-        apiTag = ApiTag.BRANDS;
-        put("cid", 60);
-        mPresenter.response(BasicsResponse.class);
+        mPresenter.response(new TestRequest(60), TestBean.class, ApiTag.BRANDS);
 
-        apiTag = ApiTag.BRANDS_TEST;
-        put("cid", 294);
-        mPresenter.response(TestBean.class);
+        mPresenter.response(new TestRequest(294), TestBean.class, ApiTag.BRANDS_TEST);
 
     }
 
     @Override
-    public <T extends BasicsResponse> void callBack(T r, int tag, Object obj) {
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
+
+    @Override
+    public <R extends BasicsResponse> void callBack(R r, int tag, Object obj) {
         switch (tag) {
             case ApiTag.BRANDS:
-                Log.e("Tag" + "  " + ApiTag.BRANDS, new Gson().toJson(r));
+                TestBean testBean = (TestBean) r;
+                Log.e("Tag" + "  " + ApiTag.BRANDS, new Gson().toJson(testBean.getData().getDatas()));
                 break;
             case ApiTag.BRANDS_TEST:
                 Log.e("Tag" + "  " + ApiTag.BRANDS_TEST, new Gson().toJson(r));

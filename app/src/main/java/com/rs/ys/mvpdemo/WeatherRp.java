@@ -4,6 +4,8 @@ import com.rs.ys.mvpdemo.basics.BasicsResponse;
 
 import java.util.List;
 
+import okhttp3.ResponseBody;
+
 /**
  * Created by 谢岳峰 on 2018/8/28.
  */
@@ -14,6 +16,10 @@ public class WeatherRp extends BasicsResponse {
      */
 
     private DataBean data;
+
+    public WeatherRp(ResponseBody responseBody, boolean showMsg) {
+        super(responseBody, showMsg);
+    }
 
     public DataBean getData() {
         return data;

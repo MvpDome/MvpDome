@@ -1,11 +1,8 @@
 package com.rs.ys.mvpdemo;
 
 import java.util.Map;
-import java.util.Observable;
 
-import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
-import retrofit2.http.Body;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -21,7 +18,7 @@ public interface Api {
     int RequestSuccess = 0;
     @FormUrlEncoded
     @POST
-    io.reactivex.Observable<ResponseBody> requestPOST( @Url String url,@FieldMap Map<String ,Object> map);
+    io.reactivex.Observable<ResponseBody> requestPOST( @Url String url,@FieldMap Map<String ,String> map);
     @GET
-    io.reactivex.Observable<ResponseBody> requestGet(@Url String url,@QueryMap Map<String ,Object> map);
+    io.reactivex.Observable<ResponseBody> requestGet(@Url String url,@QueryMap Map<String ,String> map);
 }

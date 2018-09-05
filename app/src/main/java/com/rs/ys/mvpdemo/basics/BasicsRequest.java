@@ -10,11 +10,27 @@ import java.util.LinkedHashMap;
 public abstract class BasicsRequest {
     public abstract String getRequestUrl();
 
+    public boolean isShowMsg() {
+        return false;
+    }
+
     public LinkedHashMap<String, String> getMapParams() {
         LinkedHashMap<String, String> params = new LinkedHashMap<>();
         String[] filedName = getFiledName();
         for (String key : filedName) {
-            params.put(key, (String) getFieldValueByName(key));
+            Object fieldValueByName = getFieldValueByName(key);
+            if (fieldValueByName instanceof Integer)
+                params.put(key, Integer.toString((Integer) fieldValueByName));
+            else if (fieldValueByName instanceof Long)
+                params.put(key, Long.toString((Long) fieldValueByName));
+            else if (fieldValueByName instanceof Float)
+                params.put(key, Float.toString((Float) fieldValueByName));
+            else if (fieldValueByName instanceof Double)
+                params.put(key, Double.toString((Double) fieldValueByName));
+            else if (fieldValueByName instanceof Boolean)
+                params.put(key, Boolean.toString((Boolean) fieldValueByName));
+            else if (fieldValueByName instanceof String)
+                params.put(key, (String) fieldValueByName);
         }
         return params;
     }
