@@ -8,6 +8,7 @@ import javax.inject.Singleton;
 
 import dagger.BindsInstance;
 import dagger.Component;
+import me.jessyan.rxerrorhandler.core.RxErrorHandler;
 
 /**
  * Created by 谢岳峰 on 2018/8/27.
@@ -16,6 +17,9 @@ import dagger.Component;
 @Component(modules = AppModule.class)
 public interface AppComponent {
     Application application();
+
+    //RxJava 错误处理管理类
+    RxErrorHandler rxErrorHandler();
 
     @Component.Builder
     interface Builder {

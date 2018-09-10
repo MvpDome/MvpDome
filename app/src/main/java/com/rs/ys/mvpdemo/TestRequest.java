@@ -8,9 +8,6 @@ import com.rs.ys.mvpdemo.basics.BasicsRequest;
 public class TestRequest extends BasicsRequest {
     private int cid;
 
-    public TestRequest() {
-    }
-
     public TestRequest(int cid) {
         this.cid = cid;
     }

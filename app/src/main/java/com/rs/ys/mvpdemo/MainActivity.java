@@ -13,11 +13,7 @@ public class MainActivity extends BasicsImplActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        mPresenter.response(new TestRequest(60), TestBean.class, ApiTag.BRANDS);
-
-        mPresenter.response(new TestRequest(294), TestBean.class, ApiTag.BRANDS_TEST);
-
+        mPresenter.request(new TestRequest(60), false, ApiTag.BRANDS, null);
     }
 
     @Override
@@ -34,13 +30,13 @@ public class MainActivity extends BasicsImplActivity {
     public <R extends BasicsResponse> void callBack(R r, int tag, Object obj) {
         switch (tag) {
             case ApiTag.BRANDS:
-                TestBean testBean = (TestBean) r;
-                Log.e("Tag" + "  " + ApiTag.BRANDS, new Gson().toJson(testBean.getData().getDatas()));
+                if (r != null)
+                    Log.e("Tag" + "  " + ApiTag.BRANDS, new Gson().toJson(r.getBean(TestBean.class, true)));
                 break;
             case ApiTag.BRANDS_TEST:
-                Log.e("Tag" + "  " + ApiTag.BRANDS_TEST, new Gson().toJson(r));
+                if (r != null)
+                    Log.e("Tag" + "  " + ApiTag.BRANDS_TEST, new Gson().toJson(r));
                 break;
         }
     }
-
 }

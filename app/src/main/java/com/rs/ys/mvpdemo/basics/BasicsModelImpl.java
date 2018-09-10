@@ -1,7 +1,10 @@
 package com.rs.ys.mvpdemo.basics;
 
 import com.rs.ys.mvpdemo.Api;
-import com.rs.ys.mvpdemo.base.BaseModel;
+import com.rs.ys.mvpdemo.IModel;
+import com.rs.ys.mvpdemo.Response;
+
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -15,30 +18,31 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * Created by 谢岳峰 on 2018/8/27.
  */
-public class BasicsModelImpl extends BaseModel {
+public class BasicsModelImpl implements IModel {
+
+    private Api api;
+
     @Inject
     public BasicsModelImpl() {
         super();
-    }
-
-    public <T extends BasicsRequest> Observable<BasicsResponse> requestGet(T t) {
-        return getRetrofitService(Api.class,"http://www.wanandroid.com/")
-                .requestGet(t.getRequestUrl(), t.getMapParams())
-                .flatMap((Function<ResponseBody, Observable<BasicsResponse>>) responseBody -> {
-                    BasicsResponse response = new BasicsResponse(responseBody, t.isShowMsg());
-                    return Observable.just(response);
-                });
-    }
-
-    private <T> T getRetrofitService(Class<T> service, String baseUrl) {
-        Retrofit retrofit = new Retrofit.Builder().baseUrl(baseUrl)
+        api = new Retrofit.Builder().baseUrl("http://www.wanandroid.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .build();
-        return retrofit.create(service);
+                .build()
+                .create(Api.class);
     }
 
     @Override
-    public void onDestroy() {
+    public Observable<ResponseBody> get(String actionHeader, Map<String, String> params) {
+        return api.requestGet(actionHeader, params);
+    }
+
+    @Override
+    public <T extends BasicsRequest> Observable<Response> get(T t) {
+        return api.requestGet(t.getRequestUrl(), t.getMapParams())
+                .flatMap((Function<ResponseBody, Observable<Response>>) responseBody -> {
+                    Response response = new Response(responseBody, t.isShowMsg());
+                    return Observable.just(response);
+                });
     }
 }

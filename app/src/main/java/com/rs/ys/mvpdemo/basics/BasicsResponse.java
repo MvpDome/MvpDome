@@ -1,44 +1,68 @@
 package com.rs.ys.mvpdemo.basics;
 
-import java.io.Serializable;
+import org.json.JSONException;
 
-import okhttp3.ResponseBody;
+import java.io.Serializable;
 
 /**
  * Created by 谢岳峰 on 2018/8/28.
  */
-public class BasicsResponse implements Serializable {
-    private final ResponseBody responseBody;
-    private final boolean aBoolean;
-    private int errorCode;
+public abstract class BasicsResponse implements Serializable {
+    private String fullData;//完整Json
     private String errorMsg;
+    private String data;
+    private int errorCode;
+    private Object tag;
 
-    public BasicsResponse(ResponseBody responseBody, boolean showMsg) {
-        this.responseBody = responseBody;
-        aBoolean = showMsg;
+    public String getFullData() {
+        return fullData;
     }
 
-    public ResponseBody getResponseBody() {
-        return responseBody;
+    public void setFullData(String fullData) {
+        this.fullData = fullData;
     }
 
-    public boolean isaBoolean() {
-        return aBoolean;
-    }
-
-    public int getErrorCode() {
-        return errorCode;
-    }
-
-    public void setErrorCode(int errorCode) {
-        this.errorCode = errorCode;
-    }
-
-    public String getErrorMsg() {
+    public String getMsg() {
         return errorMsg;
     }
 
-    public void setErrorMsg(String errorMsg) {
-        this.errorMsg = errorMsg;
+    public void setMsg(String msg) {
+        this.errorMsg = msg;
     }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    public int getCode() {
+        return errorCode;
+    }
+
+    public void setCode(int code) {
+        this.errorCode = code;
+    }
+
+    public Object getTag() {
+        return tag;
+    }
+
+    public void setTag(Object tag) {
+        this.tag = tag;
+    }
+
+    /**
+     * 解析单条数据
+     *
+     * @param clazz
+     * @param isFull 是否解析完整json数据
+     * @param <T>
+     * @return
+     * @throws IllegalArgumentException 参数异常(Response中data为空)
+     */
+    public abstract <T> T getBean(Class<T> clazz, boolean isFull)
+            throws IllegalArgumentException;
 }

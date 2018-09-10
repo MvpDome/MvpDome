@@ -44,8 +44,6 @@ public abstract class BasePresenter<M extends IModel,V extends IView> implements
 
     @Override
     public void onDestroy() {
-        if (mModel != null)
-            mModel.onDestroy();
         mModel = null;
         mRootView = null;
     }

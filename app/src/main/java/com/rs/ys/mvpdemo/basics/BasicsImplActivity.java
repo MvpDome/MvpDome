@@ -1,5 +1,6 @@
 package com.rs.ys.mvpdemo.basics;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
@@ -30,5 +31,10 @@ public abstract class BasicsImplActivity extends BaseActivity<BasicsPresenterImp
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public Activity getActivity() {
+        return this;
     }
 }

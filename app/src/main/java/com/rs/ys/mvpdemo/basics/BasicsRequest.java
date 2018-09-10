@@ -1,5 +1,8 @@
 package com.rs.ys.mvpdemo.basics;
 
+import android.support.annotation.NonNull;
+
+import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.LinkedHashMap;
@@ -7,11 +10,18 @@ import java.util.LinkedHashMap;
 /**
  * Created by 谢岳峰 on 2018/8/28.
  */
-public abstract class BasicsRequest {
+public abstract class BasicsRequest implements Serializable,Comparable<BasicsRequest> {
     public abstract String getRequestUrl();
 
-    public boolean isShowMsg() {
-        return false;
+    private boolean[] showMsg = new boolean[]{false, true};//第一个参数：请求成功，展示json中的msg；第二个参数：请求失败，展示json中的msg
+    //应用场景：请求成功就展示，失败就不需要展示，
+
+    public boolean[] isShowMsg() {
+        return showMsg;
+    }
+
+    public void setShowMsg(boolean[] showMsg) {
+        this.showMsg = showMsg;
     }
 
     public LinkedHashMap<String, String> getMapParams() {
@@ -35,6 +45,14 @@ public abstract class BasicsRequest {
         return params;
     }
 
+    @Override
+    public int compareTo(@NonNull BasicsRequest o) {
+        return 0;
+    }
+
+    public Object getTag() {
+        return null;
+    }
 
     /**
      * 获取属性名数组

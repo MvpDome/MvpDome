@@ -1,5 +1,7 @@
 package com.rs.ys.mvpdemo;
 
+import android.app.Activity;
+
 import com.rs.ys.mvpdemo.basics.BasicsResponse;
 
 /**
@@ -9,4 +11,5 @@ public interface IView {
     void showLoading();
     void hideLoading();
      <R extends BasicsResponse> void callBack(R  r, int tag, Object e);
+    Activity getActivity();
 }
