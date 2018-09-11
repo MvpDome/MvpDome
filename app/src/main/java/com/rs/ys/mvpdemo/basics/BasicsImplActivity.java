@@ -4,9 +4,11 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-import com.rs.ys.mvpdemo.AppComponent;
+import com.rs.ys.mvpdemo.di.AppComponent;
 import com.rs.ys.mvpdemo.DaggerAppComponent;
 import com.rs.ys.mvpdemo.base.BaseActivity;
+import com.rs.ys.mvpdemo.di.BasicsModule;
+import com.rs.ys.mvpdemo.mvp.presenter.BasicsPresenterImpl;
 
 /**
  * Created by 谢岳峰 on 2018/8/27.

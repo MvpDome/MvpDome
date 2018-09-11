@@ -1,16 +1,21 @@
-package com.rs.ys.mvpdemo.basics;
+package com.rs.ys.mvpdemo.http;
 
 import android.support.annotation.NonNull;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 
 /**
  * Created by 谢岳峰 on 2018/8/28.
  */
-public abstract class BasicsRequest implements Serializable,Comparable<BasicsRequest> {
+public abstract class BasicsRequest implements Serializable, Comparable<BasicsRequest> {
     public abstract String getRequestUrl();
 
     private boolean[] showMsg = new boolean[]{false, true};//第一个参数：请求成功，展示json中的msg；第二个参数：请求失败，展示json中的msg
@@ -24,25 +29,34 @@ public abstract class BasicsRequest implements Serializable,Comparable<BasicsReq
         this.showMsg = showMsg;
     }
 
-    public LinkedHashMap<String, String> getMapParams() {
-        LinkedHashMap<String, String> params = new LinkedHashMap<>();
-        String[] filedName = getFiledName();
-        for (String key : filedName) {
-            Object fieldValueByName = getFieldValueByName(key);
-            if (fieldValueByName instanceof Integer)
-                params.put(key, Integer.toString((Integer) fieldValueByName));
-            else if (fieldValueByName instanceof Long)
-                params.put(key, Long.toString((Long) fieldValueByName));
-            else if (fieldValueByName instanceof Float)
-                params.put(key, Float.toString((Float) fieldValueByName));
-            else if (fieldValueByName instanceof Double)
-                params.put(key, Double.toString((Double) fieldValueByName));
-            else if (fieldValueByName instanceof Boolean)
-                params.put(key, Boolean.toString((Boolean) fieldValueByName));
-            else if (fieldValueByName instanceof String)
-                params.put(key, (String) fieldValueByName);
-        }
+    /**
+     * 决定当前参数使用Map集合还是Json串
+     *
+     * @return true = Json; false = Map
+     */
+    public boolean isParam() {
+        return false;
+    }
+
+    public LinkedHashMap<String, Object> getMapParams() {
+        LinkedHashMap<String, Object> params = new LinkedHashMap<>();
+        List<String> filedName = getFiledName();
+        for (String key : filedName)
+            params.put(key, getFieldValueByName(key));
         return params;
+    }
+
+    public String getJsonParam() {
+        JSONObject jsonObject = new JSONObject();
+        List<String> filedName = getFiledName();
+        for (String key : filedName) {
+            try {
+                jsonObject.put(key, getFieldValueByName(key));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return jsonObject.toString();
     }
 
     @Override
@@ -57,13 +71,16 @@ public abstract class BasicsRequest implements Serializable,Comparable<BasicsReq
     /**
      * 获取属性名数组
      */
-    private String[] getFiledName() {
+    private List<String> getFiledName() {
         Field[] fields = this.getClass().getDeclaredFields();
-        String[] fieldNames = new String[fields.length];
-        for (int i = 0; i < fields.length; i++) {
-            fieldNames[i] = fields[i].getName();
+        List<String> strings = new ArrayList<>();
+        for (Field field : fields) {
+            if (field.getName().equals("showMsg")) {
+                continue;
+            }
+            strings.add(field.getName());
         }
-        return fieldNames;
+        return strings;
     }
 
     /* 根据属性名获取属性值

@@ -1,4 +1,4 @@
-package com.rs.ys.mvpdemo;
+package com.rs.ys.mvpdemo.http;
 
 import okhttp3.ResponseBody;
 

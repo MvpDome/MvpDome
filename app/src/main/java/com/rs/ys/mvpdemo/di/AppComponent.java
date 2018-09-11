@@ -1,8 +1,6 @@
-package com.rs.ys.mvpdemo;
+package com.rs.ys.mvpdemo.di;
 
 import android.app.Application;
-
-import com.rs.ys.mvpdemo.module.AppModule;
 
 import javax.inject.Singleton;
 

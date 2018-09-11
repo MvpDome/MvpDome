@@ -1,4 +1,4 @@
-package com.rs.ys.mvpdemo.module;
+package com.rs.ys.mvpdemo.di;
 
 
 import android.app.Application;

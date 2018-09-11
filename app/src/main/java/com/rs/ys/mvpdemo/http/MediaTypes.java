@@ -1,0 +1,37 @@
+package com.rs.ys.mvpdemo.http;
+
+import android.support.annotation.Nullable;
+
+import okhttp3.MediaType;
+
+/**
+ * Created by 谢岳峰 on 2018/9/11.
+ */
+public class MediaTypes {
+    @Nullable
+    public static final MediaType APPLICATION_ATOM_XML_TYPE = MediaType.parse("application/atom+xml;charset=utf-8");
+    @Nullable
+    public static final MediaType APPLICATION_FORM_URLENCODED_TYPE = MediaType.parse("application/x-www-form-urlencoded;charset=utf-8");
+    @Nullable
+    public static final MediaType APPLICATION_JSON_TYPE = MediaType.parse("application/json;charset=utf-8");
+    @Nullable
+    public static final MediaType APPLICATION_OCTET_STREAM_TYPE = MediaType.parse("application/octet-stream");
+    @Nullable
+    public static final MediaType APPLICATION_SVG_XML_TYPE = MediaType.parse("application/svg+xml;charset=utf-8");
+    @Nullable
+    public static final MediaType APPLICATION_XHTML_XML_TYPE = MediaType.parse("application/xhtml+xml;charset=utf-8");
+    @Nullable
+    public static final MediaType APPLICATION_XML_TYPE = MediaType.parse("application/xml;charset=utf-8");
+    @Nullable
+    public static final MediaType MULTIPART_FORM_DATA_TYPE = MediaType.parse("multipart/form-data;charset=utf-8");
+    @Nullable
+    public static final MediaType TEXT_HTML_TYPE = MediaType.parse("text/html;charset=utf-8");
+    @Nullable
+    public static final MediaType TEXT_XML_TYPE = MediaType.parse("text/xml;charset=utf-8");
+    @Nullable
+    public static final MediaType TEXT_PLAIN_TYPE = MediaType.parse("text/plain;charset=utf-8");
+    @Nullable
+    public static final MediaType IMAGE_TYPE = MediaType.parse("image/*");
+    @Nullable
+    public static final MediaType WILDCARD_TYPE = MediaType.parse("*/*");
+}

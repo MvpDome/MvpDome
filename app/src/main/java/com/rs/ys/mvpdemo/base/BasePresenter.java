@@ -1,13 +1,11 @@
 package com.rs.ys.mvpdemo.base;
 
-import com.rs.ys.mvpdemo.IModel;
-import com.rs.ys.mvpdemo.IPresenter;
-import com.rs.ys.mvpdemo.IView;
+import com.rs.ys.mvpdemo.mvp.interfaces.IBasics;
 
 /**
  * Created by 谢岳峰 on 2018/8/27.
  */
-public abstract class BasePresenter<M extends IModel,V extends IView> implements IPresenter {
+public abstract class BasePresenter<M extends IBasics.IModel,V extends IBasics.IView> implements IBasics.IPresenter{
     protected final String TAG = this.getClass().getSimpleName();
     protected M mModel;
     protected V mRootView;

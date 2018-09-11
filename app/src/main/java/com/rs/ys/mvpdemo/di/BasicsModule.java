@@ -1,17 +1,12 @@
-package com.rs.ys.mvpdemo.basics;
+package com.rs.ys.mvpdemo.di;
 
-import android.app.Application;
-
-import com.rs.ys.mvpdemo.IModel;
-import com.rs.ys.mvpdemo.IView;
+import com.rs.ys.mvpdemo.basics.BasicsScope;
+import com.rs.ys.mvpdemo.mvp.interfaces.IBasics;
+import com.rs.ys.mvpdemo.mvp.model.BasicsModelImpl;
 import com.tbruyelle.rxpermissions2.RxPermissions;
-
-import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import me.jessyan.rxerrorhandler.core.RxErrorHandler;
-import me.jessyan.rxerrorhandler.handler.listener.ResponseErrorListener;
 
 /**
  * Created by 谢岳峰 on 2018/8/27.
@@ -19,21 +14,21 @@ import me.jessyan.rxerrorhandler.handler.listener.ResponseErrorListener;
 
 @Module
 public class BasicsModule {
-    private IView view;
+    private IBasics.IView view;
 
-    public BasicsModule(IView view) {
+    public BasicsModule(IBasics.IView view) {
         this.view = view;
     }
 
     @BasicsScope
     @Provides
-    IView providesView() {
+    IBasics.IView providesView() {
         return view;
     }
 
     @BasicsScope
     @Provides
-    IModel providesModel(BasicsModelImpl basicsModel) {
+    IBasics.IModel providesModel(BasicsModelImpl basicsModel) {
         return basicsModel;
     }
 

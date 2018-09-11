@@ -1,10 +1,9 @@
-package com.rs.ys.mvpdemo.basics;
+package com.rs.ys.mvpdemo.http;
 
 import android.text.TextUtils;
 
 import com.google.gson.Gson;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 /**

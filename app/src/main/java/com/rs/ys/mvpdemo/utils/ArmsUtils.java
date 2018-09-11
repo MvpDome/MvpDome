@@ -34,8 +34,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.rs.ys.mvpdemo.AppComponent;
-import com.rs.ys.mvpdemo.Preconditions;
+import com.rs.ys.mvpdemo.di.AppComponent;
 import com.rs.ys.mvpdemo.base.App;
 
 import java.security.MessageDigest;

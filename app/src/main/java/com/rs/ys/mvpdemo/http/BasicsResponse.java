@@ -1,4 +1,4 @@
-package com.rs.ys.mvpdemo.basics;
+package com.rs.ys.mvpdemo.http;
 
 import org.json.JSONException;
 

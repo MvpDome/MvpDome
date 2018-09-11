@@ -1,9 +1,13 @@
-package com.rs.ys.mvpdemo.basics;
+package com.rs.ys.mvpdemo.mvp.presenter;
 
 import android.annotation.SuppressLint;
 
-import com.rs.ys.mvpdemo.IView;
 import com.rs.ys.mvpdemo.base.BasePresenter;
+import com.rs.ys.mvpdemo.http.BasicsRequest;
+import com.rs.ys.mvpdemo.http.JsonHandleSubscriber;
+import com.rs.ys.mvpdemo.http.JsonResponse;
+import com.rs.ys.mvpdemo.mvp.interfaces.IBasics;
+import com.rs.ys.mvpdemo.mvp.model.BasicsModelImpl;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import javax.inject.Inject;
@@ -16,13 +20,13 @@ import me.jessyan.rxerrorhandler.handler.RetryWithDelay;
 /**
  * Created by 谢岳峰 on 2018/8/27.
  */
-public class BasicsPresenterImpl extends BasePresenter<BasicsModelImpl, IView> {
+public class BasicsPresenterImpl extends BasePresenter<BasicsModelImpl, IBasics.IView> {
 
     private RxErrorHandler mRxErrorHandler;
     private RxPermissions mRxPermissions;
 
     @Inject
-    public BasicsPresenterImpl(BasicsModelImpl mModel, IView mRootView, RxPermissions rxPermissions,RxErrorHandler rxErrorHandler) {
+    public BasicsPresenterImpl(BasicsModelImpl mModel, IBasics.IView mRootView, RxPermissions rxPermissions,RxErrorHandler rxErrorHandler) {
         super(mModel, mRootView);
         mRxPermissions = rxPermissions;
         mRxErrorHandler = rxErrorHandler;

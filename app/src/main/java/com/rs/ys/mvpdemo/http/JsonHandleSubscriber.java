@@ -1,6 +1,4 @@
-package com.rs.ys.mvpdemo.basics;
-
-import com.rs.ys.mvpdemo.Response;
+package com.rs.ys.mvpdemo.http;
 
 import java.io.IOException;
 

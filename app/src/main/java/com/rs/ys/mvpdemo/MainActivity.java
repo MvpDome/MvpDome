@@ -5,7 +5,10 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.rs.ys.mvpdemo.basics.BasicsImplActivity;
-import com.rs.ys.mvpdemo.basics.BasicsResponse;
+import com.rs.ys.mvpdemo.bean.TestBean;
+import com.rs.ys.mvpdemo.http.BasicsResponse;
+import com.rs.ys.mvpdemo.http.ApiTag;
+import com.rs.ys.mvpdemo.http.request.TestRequest;
 
 public class MainActivity extends BasicsImplActivity {
 
