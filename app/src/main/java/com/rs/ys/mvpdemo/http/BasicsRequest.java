@@ -9,8 +9,10 @@ import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by 谢岳峰 on 2018/8/28.
@@ -38,8 +40,8 @@ public abstract class BasicsRequest implements Serializable, Comparable<BasicsRe
         return false;
     }
 
-    public LinkedHashMap<String, Object> getMapParams() {
-        LinkedHashMap<String, Object> params = new LinkedHashMap<>();
+    public Map<String, Object> getMapParams() {
+        Map<String, Object> params = new HashMap<>();
         List<String> filedName = getFiledName();
         for (String key : filedName)
             params.put(key, getFieldValueByName(key));

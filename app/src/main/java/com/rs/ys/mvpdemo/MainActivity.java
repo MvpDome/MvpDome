@@ -6,8 +6,9 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.rs.ys.mvpdemo.basics.BasicsImplActivity;
 import com.rs.ys.mvpdemo.bean.TestBean;
-import com.rs.ys.mvpdemo.http.BasicsResponse;
 import com.rs.ys.mvpdemo.http.ApiTag;
+import com.rs.ys.mvpdemo.http.BasicsResponse;
+import com.rs.ys.mvpdemo.http.RequestType;
 import com.rs.ys.mvpdemo.http.request.TestRequest;
 
 public class MainActivity extends BasicsImplActivity {
@@ -16,7 +17,7 @@ public class MainActivity extends BasicsImplActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mPresenter.request(new TestRequest(60), false, ApiTag.BRANDS, null);
+        mPresenter.request(RequestType.REQUEST_GET, new TestRequest(60), false, ApiTag.BRANDS, null);
     }
 
     @Override

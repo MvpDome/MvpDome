@@ -36,16 +36,6 @@ public class BasicsModelImpl implements IBasics.IModel {
     }
 
     @Override
-    public Observable<ResponseBody> get(String url, Map<String, Object> params) {
-        return api.get(url, params);
-    }
-
-    @Override
-    public Observable<ResponseBody> get(String url, String jsonParam) {
-        return api.get(url, jsonParam);
-    }
-
-    @Override
     public <T extends BasicsRequest> Observable<Response> get(T t) {
         Observable<ResponseBody> responseBodyObservable;
         if (t.isParam()) responseBodyObservable = api.get(t.getRequestUrl(), t.getJsonParam());
@@ -55,17 +45,6 @@ public class BasicsModelImpl implements IBasics.IModel {
                     Response response = new Response(responseBody, t.isShowMsg());
                     return Observable.just(response);
                 });
-    }
-
-    @Override
-    public Observable<ResponseBody> post(String url, Map<String, Object> params) {
-        return api.postForm(url, params);
-    }
-
-    @Override
-    public Observable<ResponseBody> post(String url, String jsonParam) {
-        RequestBody requestBody = RequestBody.create(MediaTypes.APPLICATION_JSON_TYPE, jsonParam);
-        return api.postBody(url, requestBody);
     }
 
     @Override
@@ -82,5 +61,17 @@ public class BasicsModelImpl implements IBasics.IModel {
                     Response response = new Response(responseBody, t.isShowMsg());
                     return Observable.just(response);
                 });
+    }
+
+    @Override
+    public Observable<ResponseBody> uploadFiles(String url) {
+
+        return null;
+    }
+
+    @Override
+    public Observable<ResponseBody> downFile(String url) {
+
+        return null;
     }
 }

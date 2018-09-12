@@ -17,24 +17,25 @@ import okhttp3.ResponseBody;
 public interface IBasics {
     public interface IView {
         void showLoading();
+
         void hideLoading();
-        <R extends BasicsResponse> void callBack(R  r, int tag, Object e);
+
+        <R extends BasicsResponse> void callBack(R r, int tag, Object e);
+
         Activity getActivity();
     }
+
     public interface IModel {
-        Observable<ResponseBody> get(String url, Map<String, Object> params);
-
-        Observable<ResponseBody> get(String url, String jsonParam);
-
         <T extends BasicsRequest> Observable<Response> get(T t);
 
-        Observable<ResponseBody> post(String url, Map<String, Object> params);
-
-        Observable<ResponseBody> post(String url, String jsonParam);
-
         <T extends BasicsRequest> Observable<Response> post(T t);
+
+        Observable<ResponseBody> uploadFiles(String url);
+
+        Observable<ResponseBody> downFile(String url);
     }
-    public interface IPresenter{
+
+    public interface IPresenter {
         /**
          * 做一些初始化操作
          */
