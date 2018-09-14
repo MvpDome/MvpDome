@@ -6,8 +6,6 @@ import com.rs.ys.mvpdemo.http.BasicsRequest;
 import com.rs.ys.mvpdemo.http.BasicsResponse;
 import com.rs.ys.mvpdemo.http.Response;
 
-import java.util.Map;
-
 import io.reactivex.Observable;
 import okhttp3.ResponseBody;
 
@@ -30,9 +28,9 @@ public interface IBasics {
 
         <T extends BasicsRequest> Observable<Response> post(T t);
 
-        Observable<ResponseBody> uploadFiles(String url);
+        <T extends BasicsRequest> Observable<ResponseBody> uploadFiles(T t);
 
-        Observable<ResponseBody> downFile(String url);
+        <T extends BasicsRequest> Observable<ResponseBody> downFile(T t);
     }
 
     public interface IPresenter {

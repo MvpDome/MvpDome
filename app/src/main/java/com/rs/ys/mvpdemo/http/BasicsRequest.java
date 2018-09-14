@@ -10,7 +10,6 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -19,6 +18,8 @@ import java.util.Map;
  */
 public abstract class BasicsRequest implements Serializable, Comparable<BasicsRequest> {
     public abstract String getRequestUrl();
+
+    protected ArrayList<String> mContinueFileds = new ArrayList<>();
 
     private boolean[] showMsg = new boolean[]{false, true};//第一个参数：请求成功，展示json中的msg；第二个参数：请求失败，展示json中的msg
     //应用场景：请求成功就展示，失败就不需要展示，
@@ -76,9 +77,12 @@ public abstract class BasicsRequest implements Serializable, Comparable<BasicsRe
     private List<String> getFiledName() {
         Field[] fields = this.getClass().getDeclaredFields();
         List<String> strings = new ArrayList<>();
+        fieldFor:
         for (Field field : fields) {
-            if (field.getName().equals("showMsg")) {
-                continue;
+            for (String name : mContinueFileds) {
+                if (field.getName().equals(name)) {
+                    continue fieldFor;
+                }
             }
             strings.add(field.getName());
         }
